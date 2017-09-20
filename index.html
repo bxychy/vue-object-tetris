@@ -1,0 +1,12 @@
+<!DOCTYPE html><html><head><meta charset=utf-8><title>my-project</title><meta name=renderer content=webkit><meta name=format-detection content="telephone=no"><script>;(function(){
+    	var w=parseInt(window.screen.width),
+    			s=w/640,
+    			u=navigator.userAgent.toLowerCase(),
+    			m='<meta name="viewport" content="width=640,';
+    			if(/android (\d+\.\d+)/.test(u)){
+    				if(parseFloat(RegExp.$1)>2.3)m+='minimum-scale='+s+',maximum-scale='+s+',';
+    			}else{
+    				m+='user-scalable=no,';
+    			}
+    			m+='target-densitydpi=device-dpi">';
+    			document.write(m);}());</script><link href=./static/css/app.fcc6810f9379c60c005e53b197036c5b.css rel=stylesheet></head><body><div id=app></div><script type=text/javascript src=./static/js/manifest.53cfe40573e77f68b5d1.js></script><script type=text/javascript src=./static/js/vendor.f1f21c9c3718f18bc2cf.js></script><script type=text/javascript src=./static/js/app.1badc001c60298ef0e13.js></script></body></html>
