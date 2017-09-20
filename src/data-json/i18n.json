@@ -1,0 +1,111 @@
+{
+	"lan":["cn","en","fr"],
+	"default":"cn",
+	"data":{
+		"title":{
+			"cn":"俄罗斯方块",
+			"en":"TETRIS",
+			"FR":"还换,没有了"
+		},
+		"github":{
+			"cn": "GitHub",
+      		"en": "GitHub",
+      		"fr": "GitHub"
+		},
+		"linkTitle":{
+			"cn":"biubiubiu~",
+			"en":"see data source",
+			"fr":"Afficher la source des données"
+		},
+		"QRCode":{
+			"cn":"贰緯碼",
+			"en":"QR code",
+			"fr":"QR code"
+		},
+		"QRNotice":{
+			"cn":"扫不扫,瓜皮",
+			"en": "Scan QR code to play with a mobile phone",
+      		"fr": "Numérisez le code QR pour jouer avec un téléphone mobile"
+		},
+		"titleCenter":{
+			"cn":"俄罗斯方块",
+			"en": "TETRIS",
+      		"fr": "TETRIS"
+		},
+		"point":{
+			"cn":"得分",
+			"en":"point",
+			"fr":"score"
+		},
+		"heightPoint":{
+			"cn":"最高分",
+			"en":"Max",
+			"fr":"Max"
+		},
+		"lastRound":{
+			"cn":"上次得分",
+			"en":"Last Round",
+			"fr":"Dernier Tour"
+		},
+		"clears":{
+			"cn":"消除行",
+			"en":"Clears",
+			"fr":"Lignes"
+		},
+		"level":{
+			"cn":"等级",
+			"en":"Level",
+			"fr":"Difficulté"	
+		},
+		"startLine":{
+			"cn": "起始行",
+      		"en": "Start Line",
+      		"fr": "Ligne Départ"
+		},
+		"next": {
+      		"cn": "下一个",
+      		"en": "Next",
+      		"fr": "Prochain"
+    	},
+    	"pause": {
+      		"cn": "暂停",
+      		"en": "Pause",
+      		"fr": "Pause"
+    	},
+    	"sound": {
+      		"cn": "音效",
+      		"en": "Sound",
+      		"fr": "Sonore"
+    	},
+    	"reset": {
+      		"cn": "重玩",
+      		"en": "Reset",
+      		"fr": "Réinitialiser"
+    	},
+    	"rotation": {
+      		"cn": "旋转",
+      		"en": "Rotation",
+      		"fr": "Rotation"
+    	},
+    	"left": {
+      		"cn": "左移",
+      		"en": "Left",
+      		"fr": "Gauche"
+    	},
+    	"right": {
+      		"cn": "右移",
+      		"en": "Right",
+      		"fr": "Droite"
+    	},
+    	"down": {
+      		"cn": "下移",
+      		"en": "Down",
+      		"fr": "Bas"
+    	},
+    	"drop": {
+      		"cn": "掉落",
+      		"en": "Drop",
+      		"fr": "Tomber"
+    	}
+	}
+}
