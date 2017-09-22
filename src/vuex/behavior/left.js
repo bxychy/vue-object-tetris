@@ -19,6 +19,10 @@ const down = (store) => {
 			if(state.lock){
       			return false;
     		}
+//			左移音效判断
+			if(music.move){
+      			music.move();
+   	 		}
 			if(cur !== null){
 				const left = cur.left();
 //				暂停判断
@@ -26,10 +30,6 @@ const down = (store) => {
           			states.pause(false);
           			return false;
         		}
-//				左移音效判断
-				if(music.move){
-          			music.move();
-       	 		}
 //				碰撞检测
 				if(unit.want(left,state.matrix)){
 //					console.log('left-25');
@@ -40,7 +40,10 @@ const down = (store) => {
 				}
 				
 			}else{
-				
+//				级别降低 && 小于1时重置为6
+				let speed = state.speedStart;
+				speed = speed - 1 < 1 ? 6 : speed - 1;
+				store.commit('speedStart', speed);
 			}
 		}
 	})

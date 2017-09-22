@@ -10,7 +10,8 @@
 						<Point :cur="!!cur" :maxPoint="maxPoints" :points="points" />
 						<p>{{getNum}}</p>
 						<Pnum :pNum="cur ? clearLines : startLines" />
-						
+						<p>{{level}}</p>
+						<Level :level="cur ? speedRun : speedStart" />
 						<p>{{nextType}}</p>
 						<NextType :nextType="next" />
 						<div class="bottom">
@@ -27,7 +28,7 @@
 <script>
 import { mapState } from 'vuex'
 //import { isClear } from '../unit/index.js'
-import { transform , lastRecord , i18n , lan } from '../unit/const.js'
+import { transform , lastRecord , i18n , lan , speeds } from '../unit/const.js'
 
 import states from '../vuex/states.js'
 import Decorate from './componentitem/decorate.vue'
@@ -38,7 +39,7 @@ import Point from './componentitem/point.vue'
 import PropTime from './componentitem/propTime.vue'
 import Pnum from './componentitem/pNum.vue'
 import NextType from './componentitem/nextType.vue'
-
+import Level from './componentitem/level.vue'
 
 export default{
 	name:'index',
@@ -125,8 +126,19 @@ export default{
 //		}
 		setStart(){
 //			console.log(lastRecord.cur,!lastRecord.cur);
+			console.log('lastRecord',lastRecord,lastRecord.pause)
 			if(lastRecord){
-				if (!lastRecord.cur) {
+				console.log('lastRecord',lastRecord.cur,lastRecord.pause)
+//				拿到上一次游戏的状态, 如果在游戏中且没有暂停, 游戏继续
+				if(lastRecord.cur && !lastRecord.pause){
+					const speedRun = this.$store.state.speedRun;
+//					继续时, 给予当前下落速度一半的停留时间
+					let timeout = speeds[speedRun - 1] / 2;
+//					停留时间不小于最快速的速度
+					timeout = speedRun < speeds[speeds.length - 1] ? speeds[speeds.length - 1] : speedRun;
+					states.auto(timeout);
+				}
+				if(!lastRecord.cur){
           			states.overStart()
         		}
 			}else{
@@ -143,6 +155,7 @@ export default{
 		PropTime,
 		Pnum,
 		NextType,
+		Level,
 	},
 	computed:{
 		getNum(){
@@ -161,6 +174,8 @@ export default{
 			'maxPoints',
 			'startLines',
       		'clearLines',
+      		'speedRun',
+      		'speedStart',
 		])
 	},
 }

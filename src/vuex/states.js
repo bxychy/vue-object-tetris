@@ -52,7 +52,8 @@ const states={
 		const startLines = state.startLines;
 //		console.log('states.-53',startLines);
 		const startMatrix = getStartMatrix(startLines);
-//		console.log(startMatrix);
+		console.log(state.speedStart);
+		store.commit('speedRun', state.speedStart)
 //		分数初始化
 		states.calculationPoints(0);
 //		传入基本方块对象
@@ -85,7 +86,7 @@ const states={
 			}else{
 //				前一个方块触底/叠加至其他方块上
 
-//					重新建立基础方块对象，矩阵对象
+//				重新建立基础方块对象，矩阵对象
 				const shape = cur && cur.shape;
 				const xy = fromJS(cur && cur.xy);
 				let matrix = fromJS(state.matrix);
@@ -100,13 +101,11 @@ const states={
             			}
 					})
 				)
-				
 				states.nextAround(matrix);
-				
 			}
 		}
 		clearTimeout(states.fallInterval)
-		states.fallInterval = setTimeout(fall,tout === undefined ? speeds[state.speedRun - 1] : out);	
+		states.fallInterval = setTimeout(fall,tout === undefined ? speeds[state.speedRun - 1] : tout);	
 	},
 //	当前方块结束,下一个方块开始/按down时传入方法判断当前方块是否结束
 	nextAround(matrix,stopDownTrigger){
@@ -129,7 +128,6 @@ const states={
       		store.commit('nextBlock', '');
       		states.auto();
     	}, 100)
-    	
 	},
 //	游戏暂停
 	pause(isPause){
@@ -163,14 +161,14 @@ const states={
     	const clearLines = state.clearLines + lines.length;
     	store.commit('clearLines', clearLines);
     	console.log(clearLines,state.clearLines)
-	
-		const addPoints = store.state.points + (lines.length * 10) // 一次消除的行越多, 加分越多
+//		一次消除的行越多, 加分越多
+		const addPoints = store.state.points + (lines.length * 10) 
 		states.calculationPoints(addPoints);
-	
-//	const speedAdd = Math.floor(clearLines / eachLines) // 消除行数, 增加对应速度
-//  let speedNow = state.speedStart + speedAdd
-//  speedNow = speedNow > 6 ? 6 : speedNow
-//  store.commit('speedRun', speedNow)
+//		消除行数, 增加对应速度
+		const speedAdd = Math.floor(clearLines / eachLines) 
+	    let speedNow = state.speedStart + speedAdd
+	    speedNow = speedNow > 6 ? 6 : speedNow
+	    store.commit('speedRun', speedNow)
 	},
 //	分数传入
 	calculationPoints(points){

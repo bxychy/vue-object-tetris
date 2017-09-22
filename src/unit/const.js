@@ -3,12 +3,12 @@ import i18nJSON from '../data-json/i18n.json'
 //矩阵数组-对象属性名为方块形状;
 export const blockShape={
 	I:[[1,1,1,1]],
-	L:[[0,0,1],[1,1,1]],
-	J:[[1,0,0],[1,1,1]],
-	Z:[[1,1,0],[0,1,1]],
-	S:[[0,1,1],[1,1,0]],
+//	L:[[0,0,1],[1,1,1]],
+//	J:[[1,0,0],[1,1,1]],
+//	Z:[[1,1,0],[0,1,1]],
+//	S:[[0,1,1],[1,1,0]],
 	O:[[1,1],[1,1]],
-	T:[[1,1,1],[0,1,0]]
+//	T:[[1,1,1],[0,1,0]]
 }
 
 export const origin = {
@@ -33,6 +33,9 @@ export const blockType=Object.keys(blockShape);
 
 //方块下落速度
 export const speeds = [800, 650, 500, 370, 250, 160]
+
+// 每消除eachLines行, 增加速度
+export const eachLines = 20; 
 
 //最高分限制
 export const maxPoint = 999999999;
@@ -69,10 +72,11 @@ export const lastRecord = (() => {
 	}catch(e){
 		if(window.console || window.console.error) {
 //    		console.error('读取记录错误:', e)
+			window.console.error('读取记录错误:', e)
     	}
 		return false
 	}
-	console.log(data);
+//	console.log(data);
 	return data;
 })()
 
@@ -86,8 +90,6 @@ export const lan=(()=>{
 	l=i18nJSON.lan.indexOf(l)==-1 ? i18nJSON.default : l
 	return l;
 })()
-
-//export const eachLines = 20; // 每消除eachLines行, 增加速度
 
 //transfrom-hack
 export const transform = (function() {

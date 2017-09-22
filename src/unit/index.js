@@ -66,7 +66,8 @@ const unit={
 	},
 //	 将状态记录到 localStorage
 	subscribeRecord(store){
-//		console.log(store);
+		console.log('状态记录-store',store);
+		store.subscribe(() => {
 		let data = store.state;
 		data = JSON.stringify(data);
       	data = encodeURIComponent(data);
@@ -78,6 +79,7 @@ const unit={
         	data = btoa(data)
       	}
       	localStorage.setItem(StorageKey, data)
+      	})
 	}
 }
 

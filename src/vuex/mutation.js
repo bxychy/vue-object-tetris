@@ -47,6 +47,10 @@ const mutations={
 	speedRun(state, data){
     	state.speedRun = data;
 	},
+//	方块级别
+	speedStart(state, data) {
+    	state.speedStart = data;
+  	},
 //	计分
 	points(state, data){
     	state.points = data;

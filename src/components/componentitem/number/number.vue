@@ -15,14 +15,16 @@
 		watch:{
 			$props:{
 				handler(val,oldVal){
+//					console.log(val)
 					this.numCreation(val);
 				},
 				deep:true,
 			}
 		},
-		props: ['number','propTime'],
+		props: ['number','propTime','plevel'],
 		created(){
 			this.numInit();
+			this.numCreation();
 		},
 		methods:{
 			numInit(){
@@ -43,6 +45,8 @@
 //					return false;
 					this.length = this.propTime.length;
 //					console.log('41',numMatrix)
+				}else if(this.plevel){
+					numMatrix = (this.plevel+'').split('');
 				}else{
 					numMatrix = (this.number+'').split('');
 //					this.data=[];

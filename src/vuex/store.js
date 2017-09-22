@@ -8,27 +8,34 @@ import { hasWebAudioApi } from '../unit/music.js'
 
 Vue.use(Vuex)
 
-const matrixInitState = lastRecord && Array.isArray(lastRecord.matrix) ? lastRecord.matrix : blankMatrix
+const matrixInitState = lastRecord && Array.isArray(lastRecord.matrix) ? lastRecord.matrix : blankMatrix;
 
-const lockInitState = lastRecord && lastRecord.lock !== undefined ? !!lastRecord.lock : false
+const lockInitState = lastRecord && lastRecord.lock !== undefined ? !!lastRecord.lock : false;
 
-const resetInitState = lastRecord && lastRecord.reset ? !!lastRecord.reset : false
+const resetInitState = lastRecord && lastRecord.reset ? !!lastRecord.reset : false;
 
-const pauseInitState = lastRecord && lastRecord.pause !== undefined ? !!lastRecord.pause : false
+const pauseInitState = lastRecord && lastRecord.pause !== undefined ? !!lastRecord.pause : false;
 
-const dropInitState = lastRecord && lastRecord.drop !== undefined ? !!lastRecord.drop : false
+const dropInitState = lastRecord && lastRecord.drop !== undefined ? !!lastRecord.drop : false;
 
-let startLinesInitState = lastRecord &&　!isNaN(parseInt(lastRecord.startLines,10)) ? parseInt(lastRecord.startLines,10) : 0
+let startLinesInitState = lastRecord &&　!isNaN(parseInt(lastRecord.startLines,10)) ? parseInt(lastRecord.startLines,10) : 0;
 	if(startLinesInitState < 0 || startLinesInitState > 10){
   		startLinesInitState = 0;
 	}
 
-let clearLinesInitState = lastRecord && !isNaN(parseInt(lastRecord.clearLines, 10)) ? parseInt(lastRecord.clearLines, 10) : 0
+let clearLinesInitState = lastRecord && !isNaN(parseInt(lastRecord.clearLines, 10)) ? parseInt(lastRecord.clearLines, 10) : 0;
 	if(clearLinesInitState < 0){
   		clearLinesInitState = 0;
 	}
+	
 //方块下落速度判断
-let speedRunInitState = lastRecord && !isNaN(parseInt(lastRecord.speedRun, 10)) ? parseInt(lastRecord.speedRun, 10) : 1
+let speedRunInitState = lastRecord && !isNaN(parseInt(lastRecord.speedRun, 10)) ? parseInt(lastRecord.speedRun, 10) : 1;
+
+//方块级别判断
+let speedStartInitState = lastRecord && !isNaN(parseInt(lastRecord.speedStart, 10)) ? parseInt(lastRecord.speedStart, 10) : 1;
+	if(speedStartInitState < 1 || speedStartInitState > 6){
+  		speedStartInitState = 1;
+	}
 
 //分数判断
 let pointsInitState = lastRecord && !isNaN(parseInt(lastRecord.points, 10)) ? parseInt(lastRecord.points, 10) : 0;
@@ -56,8 +63,9 @@ let musicInitState = lastRecord && lastRecord.music !== undefined ? !!lastRecord
 const nextInitState = lastRecord && blockType.indexOf(lastRecord.next) !== -1 ? lastRecord.next : unit.getNextType()
 
 const curInitState = (() => {
+	console.log(lastRecord);
 	// 无记录 或 有记录 但方块为空, 返回 null
-  	if (!lastRecord || !lastRecord.cur) {
+  	if(!lastRecord || !lastRecord.cur){
     	return null
   	}
   	const cur = lastRecord.cur;
@@ -86,7 +94,10 @@ const state={
 //	pause: pauseInitState,
 //	方块下落速度-状态
 	speedRun: speedRunInitState,
+//	方块级别-状态
+	speedStart: speedStartInitState,
 	startLines: startLinesInitState,
+//	消除行数-状态
 	clearLines: clearLinesInitState,
 //	计分-状态
 	points:pointsInitState,
