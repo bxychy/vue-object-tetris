@@ -2,20 +2,27 @@
 
 > A Vue.js project-https://zsychy.github.io/vue-object-tetris/
 
-## Build Setup
+非常感谢[Binaryify](https://github.com/Binaryify)大大的项目指导
+具体项目介绍请参考[戳](https://github.com/Binaryify/vue-tetris)
 
-``` bash
-# install dependencies
+## 开发
+### 安装
+```
 npm install
-
-# serve with hot reload at localhost:8080
+```
+### 运行
+```
 npm run dev
+```
+浏览自动打开 [http://localhost:9991](http://localhost:9991)
 
-# build for production with minification
+### 多语言
+在 [i18n.json] 配置多语言环境，使用"lan"参数匹配语言如：
+`https://zsychy.github.io/vue-object-tetris/?lan=en`
+
+`https://zsychy.github.io/vue-object-tetris/?lan=zh`
+### 打包编译
+```
 npm run build
-
-# build for production and view the bundle analyzer report
-npm run build --report
 ```
 
-For detailed explanation on how things work, checkout the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
