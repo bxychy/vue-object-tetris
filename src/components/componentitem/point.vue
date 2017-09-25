@@ -11,7 +11,7 @@ import { i18n , lan } from '../../unit/const.js'
 const iPoint = i18n.point[lan];
 const iHighest = i18n.heightPoint[lan];
 const iLastRound = i18n.lastRound[lan];
-
+//计分展示组件
 export default{
 	data(){
 		return{
@@ -24,7 +24,6 @@ export default{
 	watch:{
 		$props:{
 			handler(val,oldVal){
-//				console.log(val);
 				this.onChange(val);
 			},
 			deep: true,

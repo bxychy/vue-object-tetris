@@ -6,6 +6,7 @@
 
 <script>
 import Number from './number/number.vue'
+//时间展示组件
 export default{
 	data(){
 		return{
@@ -19,16 +20,6 @@ export default{
 	components:{
     	Number
   	},
-//	props: ['propTime'],
-//	watch:{
-//		$props:{
-//			handler(val,oldVal){
-//				console.log(val);
-//				this.onTime(val);
-//			},
-//			deep: true,
-//		}
-//	},
 	methods:{
 		onTime(){
 			const now = new Date();
@@ -37,7 +28,6 @@ export default{
         	const sec = now.getSeconds() % 2;
         	const zt = hour.concat(sec ? 'd' : 'd_c', min);
         	this.data = zt;
-//      	console.log(this.data);
 		},
 		formate(numTime){
 			return  numTime < 10 ? `0${numTime}`.split('') : `${numTime}`.split('');

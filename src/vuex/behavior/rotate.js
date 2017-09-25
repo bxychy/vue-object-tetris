@@ -1,11 +1,11 @@
-//上键回调方法
+//上键/旋转键回调方法
 import event from '../../unit/event.js'
 import states from '../states.js'
 import unit from '../../unit/index.js'
 import { fromJS,toJS } from 'immutable'
 import { music } from '../../unit/music.js'
 
-//上键按下
+//上键/旋转键按下
 const down = (store) => {
 	const state = store.state;
 	const cur = state.cur;

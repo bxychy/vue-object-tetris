@@ -5,25 +5,13 @@
 </template>
 
 <script>
-//import { mapState } from 'vuex'
 import Number from './number/number.vue'
+//起始行展示组件
 export default{
-	data(){
-		return{
-			
-		}
-	},
 	props: ['pNum'],
 	components:{
     	Number
-  	},
-	computed:{
-//		...mapState([
-//			'cur',
-//			'startLines',
-//    		'clearLines',
-//		])
-	}
+  },
 }
 </script>
 

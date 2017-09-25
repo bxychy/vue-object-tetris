@@ -7,6 +7,7 @@
 
 <script>
 import { i18n, lan } from '../../unit/const.js'
+//Logo-恐龙组件
 export default{
 	props:['reset','cur'],
 	data(){
@@ -32,11 +33,12 @@ export default{
 		}
 	},
 	methods:{
+//		获取中/英/俄标题
 		getTitleCenter(){
 			this.titleCenter = i18n.titleCenter[lan];
 		},
+//		动画方法
 		setAnimate(animate){
-//			console.log(animate)
 			clearTimeout(this.timeOut);
 			if(animate.cur || animate.reset){
 				this.vshow = false;
@@ -91,9 +93,7 @@ export default{
 						this.logoStyle = direction + 3;
 						count++;
 						if(count === 10 || count === 20 || count === 30){
-//							console.log(direction == "r",direction);
-							direction = (direction == "r" ? direction = "l" : direction = "r")
-//							console.log('96',direction);
+							direction = (direction == "r" ? direction = "l" : direction = "r");
 						}
 						if(count < 40){
 							run(funct);
@@ -108,7 +108,6 @@ export default{
 			}
 //			动画循环
 			const dra = () => {
-//				console.log('106',direction);
 				count = 0;
 				eyes(() => {
 					eyes(() => {
@@ -118,10 +117,9 @@ export default{
 						},150,150);
 					},150,150);
 				},1000,1500);
-				
 			}
 			
-//			动画实现
+//			动画循环调用实现
 			show(() => {
 				hide(() => {
 					show(() => {

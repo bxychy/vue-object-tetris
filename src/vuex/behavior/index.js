@@ -7,6 +7,7 @@ import music from './sound.js'
 import reset from './reset.js'
 import pause from './pause.js'
 
+//操作行为库
 export default{
 	rotate,left,right,down,drop,music,reset,pause
 }

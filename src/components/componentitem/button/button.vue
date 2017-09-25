@@ -8,6 +8,7 @@
 
 <script>
 import { transform} from '../../../unit/const.js'
+//button组件
 export default{
 	props:['active','color','size','top','left','position','label','arrow'],
 }

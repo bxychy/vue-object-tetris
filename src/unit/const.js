@@ -10,7 +10,7 @@ export const blockShape={
 	O:[[1,1],[1,1]],
 //	T:[[1,1,1],[0,1,0]]
 }
-
+//方块初始化坐标
 export const origin = {
   I: [[-1, 1], [1, -1]],
   L: [[0, 0]],
@@ -21,14 +21,19 @@ export const origin = {
   T: [[0, 0], [1, 0], [-1, 1], [0, -1]]
 }
 
+//从本地数据中判断-读取标题
 export let title = i18nJSON.data.title[lan];
 
+//本地数据
 export let i18n = i18nJSON.data;
 
+//黑色
 export const fillLine = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
 
+//空白
 export const blankLine = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
 
+//方块类型对象转数组
 export const blockType=Object.keys(blockShape);
 
 //方块下落速度
@@ -71,17 +76,14 @@ export const lastRecord = (() => {
     	data = JSON.parse(data)
 	}catch(e){
 		if(window.console || window.console.error) {
-//    		console.error('读取记录错误:', e)
 			window.console.error('读取记录错误:', e)
     	}
 		return false
 	}
-//	console.log(data);
 	return data;
 })()
 
 export const lan=(()=>{
-//	console.log(getParam('lan'));
 	let l=getParam('lan').toLowerCase();
 	if(!l && navigator.languages){
 		l=navigator.languages.find(l=>i18nJSON.lan.indexOf(l)!=-1);

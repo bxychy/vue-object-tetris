@@ -6,16 +6,9 @@
 
 <script>
 import Number from './number/number.vue'
+//等级组件
 export default{
-	data(){
-		return{
-			
-		}
-	},
 	props: ['level'],
-	created(){
-		console.log(this.level);
-	},
 	components:{
     	Number
   	},

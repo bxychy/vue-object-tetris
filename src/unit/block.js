@@ -1,9 +1,9 @@
 import { List, fromJS } from 'immutable'
 import { blockShape, origin } from './const'
 
+//基础方块对象
 class Block {
 	constructor(option){
-//		console.log('block-option', option);
 		this.type = option.type
 
 		if(!option.rotateIndex){
@@ -71,9 +71,7 @@ class Block {
 			this.xy[0] + origin[this.type][this.rotateIndex][0],
 			this.xy[1] + origin[this.type][this.rotateIndex][1]
 		]
-		const nextRotateIndex = this.rotateIndex + 1 >= origin[this.type].length ?
-			0 :
-			this.rotateIndex + 1
+		const nextRotateIndex = this.rotateIndex + 1 >= origin[this.type].length ? 0 : this.rotateIndex + 1;
 		return{
 			shape: result.toJS(),
 			type: this.type,

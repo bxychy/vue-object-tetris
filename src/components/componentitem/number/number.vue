@@ -5,66 +5,58 @@
 </template>
 
 <script>
-	export default{
-		data(){
-			return{
-				data:[],
-				length:6,
-			}
-		},
-		watch:{
-			$props:{
-				handler(val,oldVal){
-//					console.log(val)
-					this.numCreation(val);
-				},
-				deep:true,
-			}
-		},
-		props: ['number','propTime','plevel'],
-		created(){
-			this.numInit();
-			this.numCreation();
-		},
-		methods:{
-			numInit(){
-//				console.log(this.number)
-				for(let m = 0;m < this.length;m++){
-					if(this.number == 0 && m == 0){
-						this.data.unshift('0');
-					}else{
-						this.data.unshift('n');
-					}
-				}
+//number组件
+export default{
+	data(){
+		return{
+			data:[],
+			length:6,
+		}
+	},
+	watch:{
+		$props:{
+			handler(val,oldVal){
+				this.numCreation(val);
 			},
-			numCreation(num){
-//				console.log(num);
-				let numMatrix;
-				if(this.propTime){
-					numMatrix = (this.propTime+'').split(',');
-//					return false;
-					this.length = this.propTime.length;
-//					console.log('41',numMatrix)
-				}else if(this.plevel){
-					numMatrix = (this.plevel+'').split('');
+			deep:true,
+		}
+	},
+	props: ['number','propTime','plevel'],
+	created(){
+//		初始化方法调用
+		this.numInit();
+		this.numCreation();
+	},
+	methods:{
+//		初始化方法
+		numInit(){
+			for(let m = 0;m < this.length;m++){
+				if(this.number == 0 && m == 0){
+					this.data.unshift('0');
 				}else{
-					numMatrix = (this.number+'').split('');
-//					this.data=[];
-//					console.log('45',numMatrix);
+					this.data.unshift('n');
 				}
-				
-//				if(typeof this.number == 'number'){
-//					this.length = 6;
-//				}
-//				console.log(num,this.number,this.number+'',numMatrix,this.length,typeof this.number);
-				for(let n = 0,len = this.length - numMatrix.length;n < len;n++){
-        			numMatrix.unshift('n');
-				}
-				this.data = numMatrix;
-				return false;
 			}
+		},
+//		根据传入的参数返回值/不传参时为初始化-待完善
+		numCreation(num){
+			let numMatrix;
+			if(this.propTime){
+				numMatrix = (this.propTime+'').split(',');
+				this.length = this.propTime.length;
+			}else if(this.plevel){
+				numMatrix = (this.plevel+'').split('');
+			}else{
+				numMatrix = (this.number+'').split('');
+			}
+			for(let n = 0,len = this.length - numMatrix.length;n < len;n++){
+    			numMatrix.unshift('n');
+			}
+			this.data = numMatrix;
+			return false;
 		}
 	}
+}
 </script>
 
 <style>

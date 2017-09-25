@@ -13,14 +13,12 @@ const mutations={
 //	基础矩阵
   	matrix(state, data){
     	state.matrix = data;
-//  	console.log('state.matrix',state.matrix);
   	},
+//	当前方块
 	moveBlock(state, data){
     	state.cur = data.reset === true ? null : new Block(data);
-//  	console.log('state.cur',state.cur);
   	},
 	reset(state, data){
-//		console.log(data);
     	state.reset = data;
   	},
 //	开始动画/结束动画
@@ -60,12 +58,10 @@ const mutations={
   		console.log()
     	state.maxPoints = data;
   	},
+//	起始行
   	startLines(state, data){
     	state.startLines = data;
   	},
-//	key_drop(state, data) {
-//  	state.keyboard['drop'] = data;
-//	},
 }
 
 export default mutations

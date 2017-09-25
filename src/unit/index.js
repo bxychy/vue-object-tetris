@@ -11,9 +11,7 @@ const unit={
 	want(nextMatrix,matrix){
 		matrix = fromJS(matrix);
 		const horizontal = fromJS(nextMatrix.shape).get(0).size;
-//		console.log(horizontal,nextMatrix.xy[1]);
 		return nextMatrix.shape.every((arr1,index1) => arr1.every((arr2,index2) => {
-//				console.log(nextMatrix.xy[0] + index1);
 				if(nextMatrix.xy[0] + index1 < 0){
 //					按键过快导致-1/top-旋转
 					return true;
@@ -27,7 +25,6 @@ const unit={
 //          		right
           			return false
 				}else if(arr2){
-//					console.log(matrix.get(nextMatrix.xy[0] + index1).get(nextMatrix.xy[1] + index2));
 //      		方块与方块之间的碰撞检测
 					if(matrix.get(nextMatrix.xy[0] + index1).get(nextMatrix.xy[1] + index2)){
 						return false;
@@ -45,43 +42,39 @@ const unit={
 		const clearLines = [];
 		matrix.forEach((item,index) => {
 			if(item.every(i => !!i)){
-//				console.log('index-48',index);
 				clearLines.push(index);
 			}
 		})
 		if(clearLines.length === 0){
 			return false;
 		}
-//		console.log('index-55',clearLines);
 		return clearLines;
 	},
 //	判断游戏是否结束,从上往下第一行是否有方块存在
 	isOver(matrix){
-//		console.log('unit-index.js.50');
 		if(List.isList(matrix)){
 			matrix = matrix.toJS();
 		}
-//		console.log(matrix[0]);
 		return matrix[0].some(n => !!n);
 	},
 //	 将状态记录到 localStorage
 	subscribeRecord(store){
-		console.log('状态记录-store',store);
+//		console.log('状态记录-store',store);
+//		观察者模式/发布-订阅模式
 		store.subscribe(() => {
-		let data = store.state;
-		data = JSON.stringify(data);
-      	data = encodeURIComponent(data);
-//    	当前状态为锁定,不记录
-      	if(data.lock){
-      		return false;
-      	}
-      	if (window.btoa) {
-        	data = btoa(data)
-      	}
-      	localStorage.setItem(StorageKey, data)
+			let data = store.state;
+			data = JSON.stringify(data);
+	      	data = encodeURIComponent(data);
+	//    	当前状态为锁定,不记录
+	      	if(data.lock){
+	      		return false;
+	      	}
+	      	if (window.btoa) {
+	        	data = btoa(data)
+	      	}
+	      	localStorage.setItem(StorageKey, data);
       	})
 	}
 }
-
 
 export default unit

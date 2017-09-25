@@ -68,7 +68,6 @@
 				</div>
 				<div>
 					<b v-for="(btem,index) in 7" class="clear" v-if="index==1 || index==3 || index==5"></b>
-					<!--<b class="em" v-else-if="index==0 || index==3 || index==6 || index==9"></b>-->
 					<b class="b c" v-else ></b>
 				</div>
 			</div>
@@ -78,13 +77,9 @@
 
 <script>
 import { i18n, lan } from '../../unit/const.js'
+//整体界面上半部分-UI组件
 export default{
 	name:'decorate',
-	data(){
-		return{
-			
-		}
-	},
 	computed:{
 		title:()=>i18n.title[lan],
 	}

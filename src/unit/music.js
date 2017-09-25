@@ -34,14 +34,19 @@ export const music = {};
 					return source;
 				}
 //				游戏开始音效,只有开始时播放一次
-//				music.killStart = () =>{
 				music.start = () => {
 					if(!store.state.music){
 						return false;
 					}
 					getSource().start(0, 3.7202, 3.6224);
 				}
-//				}
+//				游戏结束音效
+				music.gameOver = () => {
+					if(!store.state.music){
+						return false;
+					}
+					getSource().start(0, 8.1276, 1.1437);
+				}
 //				下落键音效
 				music.fall = () => {
 					if (!store.state.music) {
@@ -72,7 +77,6 @@ export const music = {};
 			}
 		)
 	}
-//	axios.get(url).then((res) => {});
 	audioAjax.send();
 })()
 

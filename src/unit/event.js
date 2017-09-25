@@ -4,7 +4,6 @@ const eventName = {}
 
 // 键盘/手指按下-执行位移
 const down = (env) => {
-//	console.log(env);
 	const keys = Object.keys(eventName);
 	keys.forEach((ikey) => {
 		clearTimeout(eventName[ikey]);

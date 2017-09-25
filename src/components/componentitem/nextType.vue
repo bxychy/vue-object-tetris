@@ -30,14 +30,10 @@ export default{
 	watch:{
 	    $props:{
 	      	handler(val,oldVal) {
-//	      		console.log(val.nextType,this.nextType);
 	      		this.setNextType(val.nextType);
 	      	},
 	      	deep: true,
 	    }
-	},
-	created(){
-//		console.log(this.nextType);
 	},
 	mounted() {
     	this.setNextType(this.nextType);
@@ -46,10 +42,8 @@ export default{
 		setNextType(type){
 			const nextShape = blockShape[type];
 			const nextMatrix = empty.map(e => [...e]);
-			console.log(type,nextMatrix,empty);
 			nextShape.forEach((n,s1) => {
 				n.forEach((x,s2) => {
-					console.log(xy[type][0],s1,s2,xy[type][1]);
 //					判断类型数组对象下的分数组的子元素是否等于1/显示中的位置偏移
 					if(x){
 						nextMatrix[s1 + xy[type][0]][s2 + xy[type][1]] = 1;
@@ -57,7 +51,6 @@ export default{
 				})
 			})
 			this.nextMatrix = nextMatrix;
-			console.log(nextMatrix);
 		},
 	},
 }

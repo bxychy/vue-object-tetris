@@ -63,7 +63,6 @@ let musicInitState = lastRecord && lastRecord.music !== undefined ? !!lastRecord
 const nextInitState = lastRecord && blockType.indexOf(lastRecord.next) !== -1 ? lastRecord.next : unit.getNextType()
 
 const curInitState = (() => {
-	console.log(lastRecord);
 	// 无记录 或 有记录 但方块为空, 返回 null
   	if(!lastRecord || !lastRecord.cur){
     	return null
@@ -84,6 +83,7 @@ const state={
 	music:musicInitState,
 //	基础矩-状态
 	matrix: matrixInitState,
+//	当前方块-状态
 	cur: curInitState,
 //	下一个方块-状态
 	next: nextInitState,
@@ -91,7 +91,7 @@ const state={
 	lock: lockInitState,
 	reset: resetInitState,
 //	右侧暂停-状态
-//	pause: pauseInitState,
+	pause: pauseInitState,
 //	方块下落速度-状态
 	speedRun: speedRunInitState,
 //	方块级别-状态

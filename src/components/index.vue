@@ -16,6 +16,8 @@
 						<NextType :nextType="next" />
 						<div class="bottom">
 							<PropTime />
+							<Music :music="music" />
+							<Pause :pause="pause"/>
 						</div>
 					</div>
 				</div>
@@ -27,7 +29,6 @@
 
 <script>
 import { mapState } from 'vuex'
-//import { isClear } from '../unit/index.js'
 import { transform , lastRecord , i18n , lan , speeds } from '../unit/const.js'
 
 import states from '../vuex/states.js'
@@ -37,6 +38,8 @@ import Logo from './componentitem/logo.vue'
 import Keyboard from './componentitem/keyboard.vue'
 import Point from './componentitem/point.vue'
 import PropTime from './componentitem/propTime.vue'
+import Music from './componentitem/music.vue'
+import Pause from './componentitem/pause.vue'
 import Pnum from './componentitem/pNum.vue'
 import NextType from './componentitem/nextType.vue'
 import Level from './componentitem/level.vue'
@@ -58,17 +61,11 @@ export default{
 		this.setSize();
 		this.getNumInit();
 		this.getTextType();
-		console.log(this.next);
 	},
 	mounted(){
-		window.addEventListener('resize',this.setResize.bind(this),true)
-//		console.log('matrixInitState',this.matrix);
+//		监听当前窗口大小
+		window.addEventListener('resize',this.setResize.bind(this),true);
 	},
-//	watch:{
-//		pNum:function (newQuestion){
-//			this.getNum();
-//		}
-//	},
 	methods:{
 		getNumInit(){
 			this.pNum = this.cur ? i18n.clears[lan] : i18n.startLine[lan];
@@ -77,6 +74,7 @@ export default{
 			this.nextType = i18n.next[lan];
 			this.level = i18n.level[lan];
 		},
+//		UI自适应方法
 		setSize(){
 			let fill=0;
 			const size=(()=>{
@@ -100,35 +98,17 @@ export default{
 			})()
 			this.size=size;
 			this.fill=fill;
-//			console.log(this.fill);
 		},
+//		当前窗口大小变更方法
 		setResize(){
-//			console.log('67');
 			this.indexWidth = document.documentElement.clientWidth;
       		this.indexHeight = document.documentElement.clientHeight;
       		this.setSize();
       		this.setStart();
-//    		this.getPropsChange();
 		},
-		getPropsChange(){
-//			console.log('nextProps');
-//			const clears=isClear();
-//			this.setOverState();
-		},
-//		setOverState(nextProps){
-//			console.log('nextProps-58',nextProps);
-//			let overState=this.getMatrixData(nextProps);
-//			this.overState=overState;
-//			const exLine=((index)=>{
-//				overState = overState.set(19 - index, List(fillLine))
-//			})
-//			this.overState = overState
-//		}
+//		初始化方法
 		setStart(){
-//			console.log(lastRecord.cur,!lastRecord.cur);
-			console.log('lastRecord',lastRecord,lastRecord.pause)
 			if(lastRecord){
-				console.log('lastRecord',lastRecord.cur,lastRecord.pause)
 //				拿到上一次游戏的状态, 如果在游戏中且没有暂停, 游戏继续
 				if(lastRecord.cur && !lastRecord.pause){
 					const speedRun = this.$store.state.speedRun;
@@ -153,14 +133,19 @@ export default{
 		Keyboard,
 		Point,
 		PropTime,
+		Music,
+		Pause,
 		Pnum,
 		NextType,
 		Level,
+		
 	},
 	computed:{
+//		起始行绑定上下文
 		getNum(){
 			return this.pNum = this.cur ? i18n.clears[lan] : i18n.startLine[lan];
 		},
+//		获取各状态
 		...mapState([
 			'matrix',
 			'cur',
