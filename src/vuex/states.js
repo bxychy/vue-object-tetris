@@ -158,7 +158,7 @@ const states={
 	    let speedNow = state.speedStart + speedAdd;
 	    speedNow = speedNow > 6 ? 6 : speedNow;
 	    store.commit('speedRun', speedNow);
-		console.log(setTimeout(() => {console.log('张');setTimeout(() => {console.log('三');setTimeout(() => {console.log('岁~');setTimeout(() => {console.log('❥(^_-)')},1000)},1000)},1000)},1000))
+		console.log(setTimeout(() => {console.log('张');setTimeout(() => {console.log('六');setTimeout(() => {console.log('岁~');setTimeout(() => {console.log('❥(^_-)')},1000)},1000)},1000)},1000))
 	},
 //	分数传入
 	calculationPoints(points){
